@@ -77,6 +77,20 @@
     
         <hr>
 
+
+      <button id="myBtn">Open Modal</button>
+
+      <!-- The Modal -->
+      <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <p>Some text in the Modal..</p>
+        </div>
+
+      </div>
+
     <footer class="footer">
       <div class="container">
         <p><a href="/api/friends">API Friends Link</a>
@@ -111,21 +125,22 @@
             $("#q10").val().trim()
         ]
       };
-      //console.log(newFriend);
+    //   //console.log(newFriend);
 
-      for (i = 0; newFriend.scores[i]; i++){
-          newFriend.scores[i] = parseInt(newFriend.scores[i]);
-      }
+    //   for (i = 0; newFriend.scores[i]; i++){
+    //       newFriend.scores[i] = parseInt(newFriend.scores[i]);
+    //   }
 
-      //console.log(newFriend);
-    //   console.log(newFriend.scores[0])
-       //console.log(newFriend.scores[0] + 3)
+    //   //console.log(newFriend);
+    // //   console.log(newFriend.scores[0])
+    //    //console.log(newFriend.scores[0] + 3)
 
 
 
       $.post("/api/friends", newFriend,
         function(data) {
-            //Here, I need to take the matched friend and their data and display it.
+
+        
 
         });
 
