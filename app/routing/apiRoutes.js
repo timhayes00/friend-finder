@@ -1,9 +1,7 @@
 var friendsData = require("../data/friends");
-
-var closestMatch = 50;
 var valuesComparison;
-var currentComp = 0;
-var bestMatch;
+
+
 
 module.exports = function(app) {
   app.get("/api/friends", function(req, res) {
@@ -11,21 +9,28 @@ module.exports = function(app) {
   });
 
   app.post("/api/friends", function(req, res) {
-      console.log(req.body);
+      
+    console.log(req.body);
     friendsData.push(req.body);
-    var lastData = friendsData.length;
-      for (i = 0; i < friendsData.length; i++){      
-          
+    var searchArray = friendsData.length -1;
+      for (i = 0; i < searchArray; i++){
+          var bestMatch;
+          var closestMatch = 50;
+          var currentComp = 0;
+          console.log("iterating through the 'i' loop")
           for (j = 0; j < 10; j++){
-              currentComp += Math.abs(friendsData[i].scores[j] - friendsData[lastData].scores[j]);
-              console.log("ignition");
+              //console.log("friendsData[i].scores[j] " + friendsData[i].scores[j])
+              //console.log("friendsData[lastData].scores[j] " + friendsData[recentFriend].scores[j])
+              currentComp += Math.abs(parseInt(friendsData[i].scores[j]) - parseInt(req.body.scores[j]));
           }
+          console.log("current value of 'currentComp' = " + currentComp)
           if (currentComp < closestMatch)
           {
               bestMatch = friendsData[i];
           }
           
       }
+    console.log(bestMatch);
 
   });
 
